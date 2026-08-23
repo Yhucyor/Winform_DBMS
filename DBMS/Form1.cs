@@ -11,7 +11,7 @@ namespace DBMS
         String strCon = @"Data Source=DESKTOP-LPF0IL9;Initial Catalog=Test;Integrated Security=True;Trust Server Certificate=True";
         // Chuỗi kết nối đến cơ sở dữ liệu SQL Server - như địa chỉ máy chủ, tên cơ sở dữ liệu, thông tin xác thực, v.v.
         SqlConnection sqlCon = null;
-        // Đối tượng SqlConnection để quản lý kết nối đến cơ sở dữ liệu
+        // Đối tượng kết nói (SqlConnection) để quản lý kết nối đến cơ sở dữ liệu
 
         public Form1()
         {
@@ -25,7 +25,7 @@ namespace DBMS
                 sqlCon = new SqlConnection(strCon);
                 // Tạo đối tượng SqlConnection để kết nối đế Cở Sở Dữ Liệu SQL Server
 
-                if(sqlCon.State == ConnectionState.Closed)
+                if (sqlCon.State == ConnectionState.Closed)
                 {
                     sqlCon.Open();
                     MessageBox.Show("Kết nối thành công");
@@ -35,6 +35,18 @@ namespace DBMS
             {
                 // Hiển thị thông báo lỗi nếu có ngoại lệ xảy ra
                 MessageBox.Show(ex.Message);
+            }
+        }
+
+        private void btnCloseConnect_Click(object sender, EventArgs e)
+        {
+            if (sqlCon != null && sqlCon.State == ConnectionState.Open)
+            {
+                sqlCon.Close();
+                MessageBox.Show("Đã đóng kết nối ");
+            } else
+            {
+                MessageBox.Show("Chưa kết nối hoặc kết nối đã đóng");
             }
         }
     }

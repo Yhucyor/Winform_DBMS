@@ -50,6 +50,7 @@
             btnCloseConnect.TabIndex = 1;
             btnCloseConnect.Text = "Đóng Kết Nối";
             btnCloseConnect.UseVisualStyleBackColor = true;
+            btnCloseConnect.Click += btnCloseConnect_Click;
             // 
             // Form1
             // 
