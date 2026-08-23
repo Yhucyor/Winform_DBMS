@@ -25,7 +25,7 @@ namespace DBMS
                 sqlCon = new SqlConnection(strCon);
                 // Tạo đối tượng SqlConnection để kết nối đế Cở Sở Dữ Liệu SQL Server
 
-                if(sqlCon.State == ConnectionState.Closed)
+                if (sqlCon.State == ConnectionState.Closed)
                 {
                     sqlCon.Open();
                     MessageBox.Show("Kết nối thành công");
@@ -35,6 +35,18 @@ namespace DBMS
             {
                 // Hiển thị thông báo lỗi nếu có ngoại lệ xảy ra
                 MessageBox.Show(ex.Message);
+            }
+        }
+
+        private void btnCloseConnect_Click(object sender, EventArgs e)
+        {
+            if (sqlCon != null && sqlCon.State == ConnectionState.Open)
+            {
+                sqlCon.Close();
+                MessageBox.Show("Đã đóng kết nối ");
+            } else
+            {
+                MessageBox.Show("Chưa kết nối hoặc kết nối đã đóng");
             }
         }
     }
